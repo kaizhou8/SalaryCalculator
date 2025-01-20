@@ -17,7 +17,8 @@ namespace SalaryCalculator.Domain.Models
             // Calculate superannuation and taxable income
             var unroundedTaxableIncome = grossPackage / (1 + SuperannuationRate);
             Superannuation = (grossPackage - unroundedTaxableIncome).RoundUpToNearestCent();
-            TaxableIncome = (grossPackage - Superannuation).RoundDownToNearestDollar();
+            TaxableIncome = grossPackage - Superannuation;
+
         }
 
         public Money GrossPackage { get; }
